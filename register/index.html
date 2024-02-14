@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Kodinger">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>My Login Page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+
+
+<body class="my-login-page">
+    <script>
+       
+        var emailInput = document.getElementById('emailid').value;
+        var passwordInput = document.getElementById('upassword').value;
+
+
+
+        function validateEmail() {
+      var emailInput = document.getElementById('email').value;
+      var emailPattern = /^[a-zA-Z0-9._-]+@[a-z.-]+\.[a-zA-Z]{2,4}$/;
+
+      if (emailPattern.test(emailInput)) {
+        document.getElementById('email').classList.remove('is-invalid');
+        document.getElementById('email').classList.add('is-valid');
+        return true;
+      } else {
+        document.getElementById('email').classList.remove('is-valid');
+        document.getElementById('email').classList.add('is-invalid');
+        return false;
+      }
+    }
+
+    function validatePassword() {
+        var passwordInput = document.getElementById('upassword').value;
+        var passwordPattern = /^[A-Za-z\d]+$/;
+
+        if (passwordPattern.test(passwordInput)) {
+            document.getElementById('upassword').classList.remove('is-invalid');
+            document.getElementById('upassword').classList.add('is-valid');
+            document.getElementById('password-error').style.display = 'none';
+            return true;
+        } else {
+            document.getElementById('upassword').classList.remove('is-valid');
+            document.getElementById('upassword').classList.add('is-invalid');
+            document.getElementById('password-error').style.display = 'block';
+            return false;
+        }
+    }
+
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('upassword');
+        var showPassIcon = document.getElementById('show-pass');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            showPassIcon.classList.remove('fa-eye-slash');
+            showPassIcon.classList.add('fa-eye');
+        } else {
+            passwordInput.type = 'password';
+            showPassIcon.classList.remove('fa-eye');
+            showPassIcon.classList.add('fa-eye-slash');
+        }
+    }
+
+        </script>
+
+
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="form-container">
+                        <h3 class="text-center mb-4">Register if you don't have an account.</h3>
+                        </div>
+
+					<div id="card-form" class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Login</h4>
+                            <form class="styled-form needs-validation" method="post" action="process_login.php" enctype="multipart/form-data" novalidate onsubmit="return validateEmpId()">
+								<div class="form-group">
+									<label for="email">E-Mail Address</label>
+									<input id="email" type="email" class="form-control" id="emailid" onkeyup="validateEmail()" name="email" value="" required autofocus>
+									<div class="invalid-feedback">
+										Email is invalid
+									</div>
+								</div>
+
+								<div class="form-group">
+                                    <label for="password">Password
+                                        <a href="forgot.html" class="float-right">Forgot Password?</a>
+                                    </label>
+                                    <div class="input-group">
+                                        <input id="upassword" onkeyup="validatePassword()" type="password" class="form-control" name="password" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-eye-slash" id="show-pass" onclick="togglePasswordVisibility()"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback" id="password-error">
+                                        Password must contain only letters and digits.
+                                    </div>
+                                </div>
+                                
+                                
+
+								<div class="form-group">
+									<div class="custom-checkbox custom-control">
+										<input type="checkbox" name="remember" id="remember" class="custom-control-input">
+										<label for="remember" class="custom-control-label">Remember Me</label>
+									</div>
+								</div>
+
+								<div class="form-group m-0">
+									<button type="submit" class="btn btn-primary btn-block" name="login">
+										Login
+									</button>
+								</div>
+								<div class="mt-4 text-center">
+									Don't have an account? <a href="register.html">Create One</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+  
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="js/my-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+html,body {
+	height: 100%;
+}
+
+body.my-login-page {
+    background: url("pexels-cottonbro-studio-3584926.jpg") center center fixed;
+    background-size: contain; 
+    font-size: 14px;
+
+	font-size: 14px;
+}
+
+.my-login-page .reg{
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin: 40px auto;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+	position: relative;
+	z-index: 1;
+}
+
+.my-login-page  {
+	height: 50px;
+}
+
+.my-login-page .card-wrapper {
+	width: 400px;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+	padding: 10px;
+}
+
+.my-login-page .card {
+	margin-bottom: 30px;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 9px 10px;
+    background-color: #886fd4f7;
+    border-bottom: #886fd4f7;
+}
+
+.my-login-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}
+
+.text-center{
+    margin-top: 50px;
+    width: 455px;
+    text-align: center;
+    align-items: center;
+    padding-right: 41px;
+    margin-top:  120px;
+    
+
+}
+.card.fat
+{
+    height: 450px;
+    
+    }

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Kodinger">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="regstyle.css">
+	<style>
+		html,body {
+	height: 100%;
+}
+
+body.my-login-page {
+    background: url("image.jpg") center center fixed;
+	background-size: contain; 
+    
+	font-size: 14px;
+}
+
+.my-login-page .reg{
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin: 40px auto;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+	position: relative;
+	z-index: 1;
+}
+
+.my-login-page  {
+	height: 50px;
+}
+
+.my-login-page .card-wrapper {
+	width: 400px;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+	padding: 10px;
+    margin-top: 50px;
+}
+
+.my-login-page .card {
+	margin-bottom: 30px;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+    padding-right: 60px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 9px 10px;
+    background-color: #886fd4f7;
+    border-bottom: #886fd4f7;
+}
+
+.card-title  {
+	margin: 40px 0;
+	color: #886fd4f7;
+	text-align: center;
+}
+
+.card-body{
+    padding-top: 0px;
+}
+.message {
+    margin-top: 10px;
+}
+
+.success {
+    color: #4CAF50;
+}
+
+.danger {
+    color: #FF0000;
+}
+	</style>
+</head>
+
+
+<body class="my-login-page">
+
+	
+		
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Register here!</h4>
+
+							<div class="message">
+								<div id="successMsg" class="success" style="display: none;">
+									Details added successfully!
+								</div>
+							</div>
+							
+							<div class="message">
+								<div id="errorMsg" class="danger" style="display: none;">
+									Fill all the details!
+								</div>
+							</div>
+							<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+							<form class="styled-form needs-validation" method="post" action="process_registration.php" enctype="multipart/form-data" >
+								<div class="form-group">
+									<label for="name">Name</label>
+									<input id="inputname" type="text" class="form-control"  onkeyup="validateEmpName()" name="name" required autofocus>
+									<div class="invalid-feedback">
+										What's your name?
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="email">E-Mail Address</label>
+									<input id="inputemail" type="email" class="form-control"  onkeyup="validateEmail()" name="email" required>
+									<div class="invalid-feedback">
+										Your email is invalid
+									</div>
+								</div>
+
+								<div class="form-group">
+    								<label for="password">Password</label>
+    								<input id="inputpassword" type="password" class="form-control" name="password" required data-eye >
+    								<div class="invalid-feedback">
+        								Password is required and must be at least 8 characters.
+    								</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="custom-checkbox custom-control">
+										<input type="checkbox" name="agree" id="agree" class="custom-control-input" >
+										<label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+										<div class="invalid-feedback">
+											You must agree with our Terms and Conditions
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group m-0">
+									<button type="submit" name="submit" class="btn btn-primary btn-block" onclick="message()">
+										Register
+									</button>
+								</div>
+								<div class="mt-4 text-center">
+									Already have an account? <a href="index.html">Login</a>
+								</div>
+							</form>
+
+							<script>
+								function validateEmpName() {
+									var NameInput = document.getElementById('inputname').value;
+									var empNamePattern = /^[A-Za-z ]+$/;
+							
+									if (empNamePattern.test(NameInput) && NameInput.trim() !== "") {
+										document.getElementById('inputname').classList.remove('is-invalid');
+										document.getElementById('inputname').classList.add('is-valid');
+										return true;
+									} else {
+										document.getElementById('inputname').classList.remove('is-valid');
+										document.getElementById('inputname').classList.add('is-invalid');
+										return false;
+									}
+								}
+							
+								function validateEmail() {
+									var emailInput = document.getElementById('inputemail').value;
+									var emailPattern = /^[a-zA-Z0-9._-]+@[a-z.]+\.[a-zA-Z]{2,4}$/;
+							
+									if (emailPattern.test(emailInput)) {
+										document.getElementById('inputemail').classList.remove('is-invalid');
+										document.getElementById('inputemail').classList.add('is-valid');
+										return true;
+									} else {
+										document.getElementById('inputemail').classList.remove('is-valid');
+										document.getElementById('inputemail').classList.add('is-invalid');
+										return false;
+									}
+								}
+							
+								function validatePassword() {
+									var passwordInput = document.getElementById('inputpassword').value;
+							
+									if (passwordInput.length >= 8) {
+										document.getElementById('inputpassword').classList.remove('is-invalid');
+										document.getElementById('inputpassword').classList.add('is-valid');
+										return true;
+									} else {
+										document.getElementById('inputpassword').classList.remove('is-valid');
+										document.getElementById('inputpassword').classList.add('is-invalid');
+										return false;
+									}
+								}
+							
+								function validateForm() {
+									var isValid = validateEmpName() && validateEmail() && validatePassword();
+							
+									if (!isValid) {
+										showError('Please check the entered details.');
+									}
+							
+									return isValid;
+								}
+							
+								document.addEventListener('DOMContentLoaded', () => {
+									const registrationForm = document.getElementById('registration-form');
+									registrationForm.addEventListener('submit', function (event) {
+										if (!validateForm()) {
+											event.preventDefault(); // Prevent the form from being submitted
+										}
+									});
+								});
+							
+								function message() {
+									var NameInput = document.getElementById('inputname');
+									var emailInput = document.getElementById('inputemail');
+									var passwordInput = document.getElementById('inputpassword');
+							
+									if (NameInput.value === '' || emailInput.value === '' || passwordInput.value === '') {
+										showError('Fill all the details!');
+									} else {
+										showSuccess();
+									}
+								}
+							
+								function showSuccess() {
+									Swal.fire({
+										icon: 'success',
+										title: 'Registered successfully!',
+										showConfirmButton: true,
+										timer: 90000000,
+									});
+								}
+							
+								function showError(danger) {
+									Swal.fire({
+										icon: 'error',
+										title: danger,
+										showConfirmButton: true,
+										timer: 30000
+									});
+								}
+							</script>
+							
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="js/my-login.js"></script>
+
+	
+	
+</body>
+</html>
